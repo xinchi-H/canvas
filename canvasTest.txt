@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>canvas</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    #canvas {
+      background: gray;
+      height: 100vh;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='canvas'></div>
+</body>
+
+<script>
+  var div = document.getElementById('canvas')
+  var painting = false
+  // 按下鼠标
+  div.onmousedown = function (aa) {
+    painting = true
+    var x = aa.clientX
+    var y = aa.clientY
+    var divAA = document.createElement('div')
+
+    divAA.style = 'width: 6px;height: 6px;' + 'background: black; border-radius: 3px;' + 'position:absolute;' + 'left: ' + (x - 2) + 'px;' + 'top: ' + (y - 2) + 'px;'
+
+    div.appendChild(divAA)
+  }
+  // 移动鼠标
+  div.onmousemove = function (bb) {
+    if (painting) {
+      var x = bb.clientX
+      var y = bb.clientY
+      var divBB = document.createElement('div')
+      divBB.style = 'width: 6px;height: 6px;' + 'background: black; border-radius: 3px;' + 'position:absolute;' + 'left: ' + (x - 2) + 'px;' + 'top: ' + (y - 2) + 'px;'
+      div.appendChild(divBB)
+    } else {
+
+    }
+  }
+  // 松开鼠标
+  div.onmouseup = function (cc) {
+    painting = false
+  }
+
+</script>
+
+</html>
