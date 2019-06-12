@@ -1,22 +1,46 @@
 var yyy = document.getElementById('ccc');
 var context = yyy.getContext('2d');
-var painting = false
+// 获取页面宽高并应用
+pagesize()
+window.onresize = function () {
+  pagesize()
+}
+
+var using = false
+// 点击Eraser按钮改变状态
+var eraserEnabled = false
+
+eraser.onclick = function () {
+  eraserEnabled = true
+  action.className = 'actions x'
+}
+brush.onclick = function () {
+  eraserEnabled = false
+  action.className = 'actions'
+}
+
 // 按下鼠标
 yyy.onmousedown = function (aaa) {
-  painting = true
   var x = aaa.clientX
   var y = aaa.clientY
-  lastPoint = { 'x': x, 'y': y }
-  drawCircle(x, y, 1)
+  using = true
+  if (eraserEnabled) {
+    context.clearRect(x - 5, y - 5, 10, 10)
+  } else {
+    lastPoint = { 'x': x, 'y': y }
+  }
 }
 // 移动鼠标
 yyy.onmousemove = function (bbb) {
-  if (painting) {
-    var x = bbb.clientX
-    var y = bbb.clientY
+  var x = bbb.clientX
+  var y = bbb.clientY
+
+  if (!using) { return } // 如果using为false，直接退出函数
+
+  if (eraserEnabled) {
+    context.clearRect(x - 5, y - 5, 10, 10)
+  } else {
     var newPoint = { 'x': x, 'y': y }
-    drawCircle(x, y, 1)
-    console.log(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
     lastPoint = newPoint
   }
@@ -24,10 +48,17 @@ yyy.onmousemove = function (bbb) {
 
 // 松开鼠标
 yyy.onmouseup = function (ccc) {
-  painting = false
+  using = false
 }
 
 // 工具函数
+function pagesize() {
+  var pageWidth = document.documentElement.clientWidth;
+  var pageHeight = document.documentElement.clientHeight;
+  yyy.width = pageWidth;
+  yyy.height = pageHeight;
+}
+
 function drawCircle(x, y, radius) {
   context.beginPath()
   context.fillStyle = 'black'

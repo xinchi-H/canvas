@@ -13,11 +13,34 @@
       background: gray;
       display: block
     }
+
+    #action {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    .actions > #brush {
+      display: none;
+    }
+    
+    .actions.x > #eraser {
+      display: none;
+    }
+    .actions.x > #brush {
+      display: inline-block;
+    }
   </style>
 </head>
 
 <body>
   <canvas id='ccc' height="300px" width="300px"></canvas>
+  <div id='action' class='actions'>
+    <button id='eraser'>橡皮擦</button>
+    <button id='brush'>画笔</button>
+  </div>
+
   <script type="text/javascript" src="/main.js"></script>
 </body>
+
 </html>
