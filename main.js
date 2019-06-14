@@ -12,7 +12,7 @@ var eraserEnabled = false
 
 eraser.onclick = function () {
   eraserEnabled = true
-  action.className = 'actions x'
+  action.className = 'actions z'
 }
 brush.onclick = function () {
   eraserEnabled = false
