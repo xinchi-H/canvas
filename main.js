@@ -19,37 +19,75 @@ brush.onclick = function () {
   action.className = 'actions'
 }
 
-// 按下鼠标
-yyy.onmousedown = function (aaa) {
-  var x = aaa.clientX
-  var y = aaa.clientY
-  using = true
-  if (eraserEnabled) {
-    context.clearRect(x - 5, y - 5, 10, 10)
-  } else {
-    lastPoint = { 'x': x, 'y': y }
+if (document.body.ontouchstart !== undefined) {
+  // 触屏设备
+  // 开始触摸
+  yyy.ontouchstart = function (AAA) {
+    console.log(AAA)
+    var x = AAA.touches[0].clientX
+    var y = AAA.touches[0].clientY
+    using = true
+    if (eraserEnabled) {
+      context.clearRect(x - 5, y - 5, 10, 10)
+    } else {
+      lastPoint = { 'x': x, 'y': y }
+    }
   }
-}
-// 移动鼠标
-yyy.onmousemove = function (bbb) {
-  var x = bbb.clientX
-  var y = bbb.clientY
-
-  if (!using) { return } // 如果using为false，直接退出函数
-
-  if (eraserEnabled) {
-    context.clearRect(x - 5, y - 5, 10, 10)
-  } else {
-    var newPoint = { 'x': x, 'y': y }
-    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
-    lastPoint = newPoint
+  // 移动
+  yyy.ontouchmove = function (BBB) {
+    var x = BBB.touches[0].clientX
+    var y = BBB.touches[0].clientY
+    if (!using) { return } // 如果using为false，直接退出函数
+    if (eraserEnabled) {
+      context.clearRect(x - 5, y - 5, 10, 10)
+    } else {
+      var newPoint = { 'x': x, 'y': y }
+      drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+      lastPoint = newPoint
+    }
   }
+  // 松开
+  yyy.ontouchend = function (ccc) {
+    using = false
+  }
+} else {
+  // 非触屏设备
+  // 按下鼠标
+  yyy.onmousedown = function (aaa) {
+    var x = aaa.clientX
+    var y = aaa.clientY
+    using = true
+    if (eraserEnabled) {
+      context.clearRect(x - 5, y - 5, 10, 10)
+    } else {
+      lastPoint = { 'x': x, 'y': y }
+    }
+  }
+  // 移动鼠标
+  yyy.onmousemove = function (bbb) {
+    var x = bbb.clientX
+    var y = bbb.clientY
+
+    if (!using) { return } // 如果using为false，直接退出函数
+
+    if (eraserEnabled) {
+      context.clearRect(x - 5, y - 5, 10, 10)
+    } else {
+      var newPoint = { 'x': x, 'y': y }
+      drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+      lastPoint = newPoint
+    }
+  }
+
+  // 松开鼠标
+  yyy.onmouseup = function (ccc) {
+    using = false
+  }
+
 }
 
-// 松开鼠标
-yyy.onmouseup = function (ccc) {
-  using = false
-}
+
+
 
 // 工具函数
 function pagesize() {
