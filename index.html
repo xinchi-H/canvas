@@ -5,43 +5,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>canvas</title>
-  <style>
-    body {
-      margin: 0;
-    }
-
-    #ccc {
-      background: gray;
-      display: block
-    }
-
-    #action {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-    }
-
-    .actions > #brush {
-      display: none;
-    }
-    
-    .actions.z > #eraser {
-      display: none;
-    }
-    .actions.z > #brush {
-      display: inline-block;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
   <canvas id='ccc' height="300px" width="300px"></canvas>
   <div id='action' class='actions'>
-    <button id='eraser'>橡皮擦</button>
-    <button id='brush'>画笔</button>
+    <svg class="icon active" id="brush" aria-hidden="true">
+      <use xlink:href="#icon-pen"></use>
+    </svg>
+    <svg class="icon" id="eraser" aria-hidden="true">
+      <use xlink:href="#icon-eraser"></use>
+    </svg>
   </div>
 
   <script src="./main.js"></script>
+  <script src="//at.alicdn.com/t/font_1244962_aw861v6udt.js"></script>
 </body>
 
 </html>

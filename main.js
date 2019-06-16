@@ -12,11 +12,13 @@ var eraserEnabled = false
 
 eraser.onclick = function () {
   eraserEnabled = true
-  action.className = 'actions z'
+  eraser.classList.add('active')
+  brush.classList.remove('active')
 }
 brush.onclick = function () {
   eraserEnabled = false
-  action.className = 'actions'
+  brush.classList.add('active')
+  eraser.classList.remove('active')
 }
 
 if (document.body.ontouchstart !== undefined) {
