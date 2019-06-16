@@ -7,7 +7,7 @@ window.onresize = function () {
 }
 
 var using = false
-// 点击Eraser按钮改变状态
+// 点击顶部按钮改变状态
 var eraserEnabled = false
 
 eraser.onclick = function () {
@@ -20,6 +20,13 @@ brush.onclick = function () {
   brush.classList.add('active')
   eraser.classList.remove('active')
 }
+
+// 按下颜色按钮
+onBlack()
+onRed()
+onYellow()
+onBlue()
+
 
 if (document.body.ontouchstart !== undefined) {
   // 触屏设备
@@ -108,10 +115,49 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x1, y1, x2, y2) {
   context.beginPath()
-  context.strokeStyle = 'black'
   context.moveTo(x1, y1)//起点
   context.lineWidth = 5
   context.lineTo(x2, y2)//终点
   context.stroke()//绘制边框
   context.closePath()
+}
+
+function onBlack() {
+  black.onclick = function () {
+    context.strokeStyle = 'black'
+    black.classList.add('active')
+    red.classList.remove('active')
+    yellow.classList.remove('active')
+    blue.classList.remove('active')
+  }
+}
+
+function onRed() {
+  red.onclick = function () {
+    context.strokeStyle = 'red'
+    red.classList.add('active')
+    black.classList.remove('active')
+    yellow.classList.remove('active')
+    blue.classList.remove('active')
+  }
+}
+
+function onYellow() {
+  yellow.onclick = function () {
+    context.strokeStyle = 'yellow'
+    yellow.classList.add('active')
+    black.classList.remove('active')
+    red.classList.remove('active')
+    blue.classList.remove('active')
+  }
+}
+
+function onBlue() {
+  blue.onclick = function () {
+    context.strokeStyle = 'blue'
+    blue.classList.add('active')
+    black.classList.remove('active')
+    red.classList.remove('active')
+    yellow.classList.remove('active')
+  }
 }

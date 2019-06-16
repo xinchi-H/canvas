@@ -1,9 +1,13 @@
+*{margin: 0;
+ padding: 0;
+}
+
 body {
  margin: 0;
 }
 
 #ccc {
- background: white;
+ background: rgba(138, 109, 53, 0.15);
  display: block
 }
 
@@ -27,4 +31,42 @@ body {
  fill: currentColor;
  overflow: hidden;
  margin: 0 5px;
+}
+
+ul,ol{list-style: none;}  /* 去掉OL自带的序号 */
+
+.colors{
+ position: fixed;
+ top: 40px;
+ left: 18px;
+}
+
+.colors li{
+ width: 15px;
+ height: 15px;
+ margin: 10px 0;
+ border-radius: 50%;
+ box-shadow: 0 0 3px rgba(0,0,0,0.25);
+ transition: all 0.3s;
+}
+
+.colors li.active{
+ box-shadow: 0 0 5px rgba(0,0,0,0.95);
+ transform: scale(1.2);
+}
+
+.colors .black{
+ background: black;
+}
+
+.colors .red{
+ background: red;
+}
+
+.colors .yellow{
+ background: yellow;
+}
+
+.colors .blue{
+ background: blue;
 }
