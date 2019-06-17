@@ -9,7 +9,10 @@ body {
 
 #ccc {
  background: rgba(138, 109, 53, 0.15);
- display: block
+ display: block;
+ position: fixed;
+ top: 0;
+ right: 0;
 }
 
 #action {
