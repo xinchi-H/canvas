@@ -24,6 +24,14 @@ brush.onclick = function () {
 clear.onclick = function () {
   context.clearRect(0, 0, yyy.width, yyy.height)
 }
+save.onclick = function () {
+  var url = yyy.toDataURL("image/png")
+  var a = document.createElement('a')
+  document.body.appendChild(a)
+  a.href = url
+  a.download = 'Canvas'
+  a.click()
+}
 // 按下颜色按钮
 onBlack()
 onRed()
