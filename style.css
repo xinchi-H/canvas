@@ -49,7 +49,7 @@ ul,ol{list-style: none;}  /* 去掉OL自带的序号 */
 .colors li{
  width: 15px;
  height: 15px;
- margin: 10px 0;
+ margin: 18px 0;
  border-radius: 50%;
  box-shadow: 0 0 3px rgba(0,0,0,0.25);
  transition: all 0.3s;
@@ -83,7 +83,7 @@ ul,ol{list-style: none;}  /* 去掉OL自带的序号 */
 }
 
 .sizes li{
-    margin: 12px 0; 
+    margin: 18px 0; 
 }
 
 .sizes > .thin{
