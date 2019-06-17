@@ -1,5 +1,6 @@
 var yyy = document.getElementById('ccc');
 var context = yyy.getContext('2d');
+var lineWidth = 3;
 // 获取页面宽高并应用
 pagesize()
 window.onresize = function () {
@@ -20,13 +21,22 @@ brush.onclick = function () {
   brush.classList.add('active')
   eraser.classList.remove('active')
 }
-
+clear.onclick = function () {
+  context.clearRect(0, 0, yyy.width, yyy.height)
+}
 // 按下颜色按钮
 onBlack()
 onRed()
 onYellow()
 onBlue()
 
+// 按下粗细按钮
+thin.onclick = function () {
+  lineWidth = 3
+}
+thick.onclick = function () {
+  lineWidth = 6
+}
 
 if (document.body.ontouchstart !== undefined) {
   // 触屏设备
@@ -115,8 +125,8 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x1, y1, x2, y2) {
   context.beginPath()
+  context.lineWidth = lineWidth
   context.moveTo(x1, y1)//起点
-  context.lineWidth = 5
   context.lineTo(x2, y2)//终点
   context.stroke()//绘制边框
   context.closePath()

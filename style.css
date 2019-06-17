@@ -35,7 +35,7 @@ body {
  vertical-align: -0.15em;
  fill: currentColor;
  overflow: hidden;
- margin: 0 5px;
+ margin: 0 8px;
 }
 
 ul,ol{list-style: none;}  /* 去掉OL自带的序号 */
@@ -74,4 +74,28 @@ ul,ol{list-style: none;}  /* 去掉OL自带的序号 */
 
 .colors .blue{
  background: blue;
+}
+
+.sizes{
+    position: fixed;
+    top: 15px;
+    right: 18px;
+}
+
+.sizes li{
+    margin: 12px 0; 
+}
+
+.sizes > .thin{
+    height: 0px;
+    width: 50px;
+    border: solid black;
+    border-width: 3px 0 3px 0;
+}
+
+.sizes > .thick{
+    height: 0;
+    width: 50px;
+    border: solid black;
+    border-width: 6px 0 6px 0;
 }
