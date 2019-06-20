@@ -114,8 +114,6 @@ if (document.body.ontouchstart !== undefined) {
 }
 
 
-
-
 // 工具函数
 function pagesize() {
   var pageWidth = document.documentElement.clientWidth;
